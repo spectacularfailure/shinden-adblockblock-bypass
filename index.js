@@ -3,7 +3,7 @@
 // @include      /^https?://shinden.pl/(episode|epek)/*/
 // @grant       none
 // @require     https://code.jquery.com/jquery-3.6.4.min.js
-// @version     1.2
+// @version     1.3
 // @author      @spectacularfailure & @nextu1337
 // @description Naprawiona wersja skryptu bypassującego adblock blocka do Shindena
 // ==/UserScript==
@@ -36,7 +36,7 @@ jQuery(document).ready(function () {
   $("a[id*='player_data']").on("click", event => {
     $('#player-block').html("<label>Proszę poczekać 6 sekund....</label>");
 
-    dataEpisode = JSON.parse($(event.target).attr("data-episode"))
+    dataEpisode = JSON.parse($(event.delegateTarget).attr("data-episode"))
 
     loadPlayer(dataEpisode["online_id"])
   })
